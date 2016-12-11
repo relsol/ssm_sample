@@ -31,17 +31,6 @@ public class Role extends IdEntity {
 	private Date updaterTime;
 	/** 修改ip **/ 
 	private String updaterIp;
-	/** 项目ID **/ 
-	private Integer projectId;
-
-	private String projectName;
-	
-	public String getProjectName() {
-		return projectName;
-	}
-	public void setProjectName(String projectName) {
-		this.projectName = projectName;
-	}
 
 	/** 无参的构造函数 **/
 	public Role(){
@@ -50,7 +39,7 @@ public class Role extends IdEntity {
 	
 	/** 有参构造函数 **/
 	public Role(String name, String code, Integer status, String remark, Integer createrId, Date createrTime,
-			String createrIp, Integer updaterId, Date updaterTime, String updaterIp, Integer projectId) {
+			String createrIp, Integer updaterId, Date updaterTime, String updaterIp) {
 		super();
 		this.name = name;
 		this.code = code;
@@ -62,7 +51,6 @@ public class Role extends IdEntity {
 		this.updaterId = updaterId;
 		this.updaterTime = updaterTime;
 		this.updaterIp = updaterIp;
-		this.projectId = projectId;
 	}
  	
 	public String getCode() {
@@ -191,17 +179,4 @@ public class Role extends IdEntity {
 		this.updaterIp = updaterIp;
 	}
 		
-	/**
-	 * @return 项目ID
-	 */
-	public Integer getProjectId() {
-		return projectId;
-	}
-	/**
-	 * @param projectId 项目ID
-	 */
-	public void setProjectId(Integer projectId) {
-		this.projectId = projectId;
-	}
- 	
 }

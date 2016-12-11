@@ -14,7 +14,7 @@
 		<property name="activityFontName" value="宋体" />
 		<property name="labelFontName" value="宋体" />
 		<property name="createDiagramOnDeploy" value="true"/>
-		<property name="databaseSchema" value="NJMIS"/>
+		<property name="databaseSchema" value="ssm"/>
 		<property name="deploymentResources" value="classpath:activiti/*.bpmn"/>
 	</bean>
 	

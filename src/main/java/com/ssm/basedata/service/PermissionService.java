@@ -33,7 +33,6 @@ public class PermissionService {
 		if (permission.getId() != null) {
 			Permission dep = this.findById(permission.getId());
 			permission.setPid(dep.getPid());
-			permission.setProjectId(dep.getProjectId());
 			this.permissionMapper.updateOne(permission);
 		} else {
 			this.permissionMapper.addOne(permission);
@@ -75,10 +74,8 @@ public class PermissionService {
 	
 	public String getTreeToGiveAuth(Integer roleId) {
 		Role role = this.roleService.findById(roleId);
-		Integer projectId = role.getProjectId();// 获取这个角色所处的项目ID
-		
+
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("projectId", projectId);
 		List<Permission> perList = this.permissionMapper.findPageList(params);
 		params.put("roleId", roleId);
 		List<Permission> rolList = this.permissionMapper.findPageList(params);

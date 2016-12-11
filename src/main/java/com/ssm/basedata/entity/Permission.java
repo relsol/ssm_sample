@@ -23,9 +23,7 @@ public class Permission extends IdEntity {
 	private Integer order;
 	/** 级别1:导航  2:菜单  3:button **/
 	private Integer level;
-	/** 项目ID **/ 
-	private Integer projectId;
-	
+
 	//非数据库字段： 子权限
 	private List<Permission> children;
 	
@@ -37,7 +35,7 @@ public class Permission extends IdEntity {
 	}
 	
 	/** 有参构造函数 **/
-	public Permission(String name,String uri,Integer pid,String remark,Integer order,Integer level, Integer projectId){
+	public Permission(String name,String uri,Integer pid,String remark,Integer order,Integer level){
 		super();
 		this.name = name;
 		this.uri = uri;
@@ -45,7 +43,6 @@ public class Permission extends IdEntity {
 		this.remark = remark;
 		this.order = order;
 		this.level = level;
-		this.projectId = projectId;
 	}
  	
 		
@@ -120,19 +117,7 @@ public class Permission extends IdEntity {
 	public void setLevel(Integer level) {
 		this.level = level;
 	}
-	/**
-	 * @return 项目ID
-	 */
-	public Integer getProjectId() {
-		return projectId;
-	}
-	/**
-	 * @param projectId 项目ID
-	 */
-	public void setProjectId(Integer projectId) {
-		this.projectId = projectId;
-	}
-	
+
 	/**
 	 * @return 子权限
 	 */

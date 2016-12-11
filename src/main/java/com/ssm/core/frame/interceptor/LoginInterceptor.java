@@ -12,6 +12,12 @@ package com.ssm.core.frame.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ssm.core.frame.common.GlobalConfigure;
+import com.ssm.core.frame.common.JSONResponse;
+import com.ssm.core.frame.utils.JsonUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.ssm.basedata.constants.BaseCons;
@@ -26,27 +32,26 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		String contextPath = request.getContextPath();
+		String servletPath = request.getServletPath();
 		request.setAttribute("path", contextPath);
 		
-//		Subject subject = SecurityUtils.getSubject();
-//		if(!subject.isAuthenticated()){
-//			for(String url : GlobalConfigure.NO_INTERCEPTOR){
-//				if(pathMatcher.match(url, requestUrl)){
-//					request.setAttribute("noInterceptor", true);
-//					return true;
-//				}
-//			}
-//			String ajaxFlag = request.getHeader("x-requested-with");
-//			if(StringUtils.isNotBlank(ajaxFlag)){
-//				JSONResponse json = new JSONResponse();
-//				json.setSuccess(true);
-//				json.setMsg("登陆超时，请重新登陆!");
-//				response.getWriter().write(JsonUtils.objToString(json));
-//				return false;
-//			}
-//			response.getWriter().write("<script>top.location='"+contextPath+"/login.html';</script>");
-//			return false;
-//		}
+		Subject subject = SecurityUtils.getSubject();
+		if("/loginUI".equals(servletPath) || "/login".equals(servletPath)){
+			return true;
+		}
+		if(!subject.isAuthenticated()){
+			String ajaxFlag = request.getHeader("x-requested-with");
+
+			if(StringUtils.isNotBlank(ajaxFlag)){
+				JSONResponse json = new JSONResponse();
+				json.setSuccess(true);
+				json.setMsg("登陆超时，请重新登陆!");
+				response.getWriter().write(JsonUtils.objToString(json));
+				return false;
+			}
+			response.getWriter().write("<script>top.location='"+contextPath+"/loginUI';</script>");
+			return false;
+		}
 		
 		try {
 			if(SessionUtil.getSession() == null

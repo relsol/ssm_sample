@@ -16,139 +16,7 @@
 <script src="${path}/static/js/jquery/jquery-smartMenu.js"></script>
 
 <script type="text/javascript">
-	var oTable1;
-	jQuery(function($) {
-		
-		oTable1 = $('#myTable').DataTable({
-			"serverSide" : true,
-			"ajax" : {
-				"url" : "${path}/employee/findPage",
-				"type" : "POST",
-				"data" : function(d) {
-					d.userName = $('#userName').val();
-					d.departmentId = $("#departmentId").val();
-				}
-			},
-			"columns" : [ 
-			    { "data" : null},
-				{ "data" : "userName"},
-		        { "data" : "loginName" }, 
-		        { "data" : "sex", render:function(data,type,full,meta){
-		        	var rtn = data;
-		        	if(data == 1){
-		        		rtn = "男";
-		        	} else if(data == 0){
-		        		rtn = "女";
-		        	}
-		        	return rtn;
-		        }}, 
-		        { "data" : "phone" }, 
-		        { "data" : "mobile" }, 
-		        { "data" : "departmentName", render:function(data,type,full,meta){
-		        	if(data){
-			        	return "<span class='numControl' title='"+data+"' style='text-align:center;'>"+data+"</span>";	
-		        	} else {
-		        		return "";
-		        	}
-		        }}, 
-		        { "data" : "cancel", render:function(data,type,full,meta){
-		        	if(data == 1){
-		        		return '注销';
-		        	} else {
-		        		return '正常';
-		        	}
-		        }}, 
-		        { "data" : "systemUser", render:function(data,type,full,meta){
-		        	return full.systemUser == '1'?'系统用户':'非系统用户';
-		        }}, 
-		        { "data" : "id", "render": function (data,type,full,meta) {
-		        	var s = '<button type="button" class="btn btn-primary btn-xs ace-icon fa fa-pencil align-top" onclick="showEmployee('+data+')">查看</button> ';
-		        	var e = '<button type="button" class="btn btn-primary btn-xs ace-icon fa fa-pencil align-top" onclick="editEmployee('+data+')">编辑</button> '; 
-		        	var d = '<button type="button" class="btn btn-info btn-xs ace-icon fa fa-key " onclick="giveAuth('+data+')">赋权</button> '; 
-		    		return e + d; 
-                }} 
-	        ]
-		}).on( 'draw.dt', function() {
-			oTable1.column(0).nodes().each(function(cell, i) {
-	            cell.innerHTML = '<b>' + (i + 1) + '</b>';
-	        });
-// 			setTableStyle();
-	    });
-	});
-	
-/*	 function setTableStyle() { 
-	      
-	    $("#myTable tbody tr").unbind("mouserover")
-	    $("#myTable tbody tr").bind("mousedown", (function (e) {
-	        if (e.which == 3) {
-	            var opertionn = {
-	                name: "",
-	                offsetX: 2,
-	                offsetY: 2,
-	                textLimit: 30,
-	                beforeShow: $.noop,
-	                afterShow: $.noop
-	            };
-	            var cells = this.getElementsByTagName("td"); // 获取到右键tr里的所有td
-	            var trHtml = cells[2].innerHTML;// 获取第三个td的内容
-	            var id = $(this).find('input[name=id]').val(); // 获取id，前提是在tr里写入隐藏域<input type='hidden' name='id' value='12321' />
-	           // 展示右键菜单
-	            var menudata = getRightMenu(e.target.cellIndex, e.target.innerHTML);
-	            
-	            oTable1.$('td.td_selected').removeClass('td_selected');
-	            if ($(e.target).hasClass('td_selected')) {
-	                $(e.target).removeClass('td_selected');
-	            } else {
-	                $(e.target).addClass('td_selected');
-	            }
-	            $.smartMenu.remove();
-	            $(this).smartMenu(menudata, opertionn);
-	        }
-	         
-	    }));
-// 	    $("#myTable tbody tr").mouseover(function (e) { 
-// 	    	oTable1.$('td.td_selected').removeClass('td_selected');
-// 	        if ($(e.target).hasClass('td_selected')) {
-// 	            $(e.target).removeClass('td_selected');
-// 	        } else {
-// 	            $(e.target).addClass('td_selected');
-// 	        }
-// 	        if ($(this).hasClass('row_selected')) {
-// 	            $(this).removeClass('row_selected');
-// 	        }
-// 	        else {
-// 	        	oTable1.$('tr.row_selected').removeClass('row_selected');
-// 	            $(this).addClass('row_selected');
-// 	        }
-// 	    });
-	}
-	
-	function getRightMenu(index,value) { 
-	  
-	    var imageMenuData = new Array();
-	    var imageMenuData2 = new Array(); 
-	    imageMenuData.push(
-			{
-        		"text": "添加到", "func": function () {
-	            	var href = "?" + dd + "&Mobile=" + value;
-	            	OpenPageByTab('添加', href);
-	        	}
-	    	}
-		);
-	  
-		imageMenuData.push({
-			"text": "复制", "func": function () {
-			window.clipboardData.setData('text', value); 
-				alert("成功到剪贴板");
-			}
-	    }); 
-	    
-		imageMenuData2.push(imageMenuData);
-	       
-	       
-		return imageMenuData2;
-	}
-*/
+
 	function doSearch(){
 		oTable1.ajax.reload();
 	}
@@ -268,22 +136,9 @@
 <body class="no-skin">
 
 	<div class="main-container" id="main-container">
-		<script type="text/javascript">
-			try {
-				ace.settings.check('main-container', 'fixed')
-			} catch (e) {
-			}
-		</script>
-
 		<div class="main-content">
 			<!-- #section:basics/content.breadcrumbs -->
 			<div class="breadcrumbs" id="breadcrumbs">
-				<script type="text/javascript">
-					try {
-						ace.settings.check('breadcrumbs', 'fixed')
-					} catch (e) {
-					}
-				</script>
 				<ul class="breadcrumb">
 					<li>
 						<i class="ace-icon fa fa-home home-icon"></i> 
@@ -298,11 +153,11 @@
 						<div class="col-md-12">
 							<form class="form-horizontal" role="form">
 								<div id="findDiv" class="form-group">
-									<label class="col-md-1 control-label no-padding-right" for="form-field-1">用户名：</label>
+									<label class="col-md-1 control-label no-padding-right" for="userName">用户名：</label>
 									<div class="col-md-2">
 										<input type="text" name="userName" id="userName">
 									</div>
-									<label class="col-md-1 control-label no-padding-right" for="form-field-1">机构：</label>
+									<label class="col-md-1 control-label no-padding-right" for="departmentName">机构：</label>
 									<div class="col-md-3">
 										<input type="hidden" name="departmentId" id="departmentId">
 										<input type="text" name="departmentName" id="departmentName" readonly="readonly" onclick="showMenu(); return false;">
@@ -337,7 +192,26 @@
 										<th>操作</th>
 									</tr>
 								</thead>
+								<tbody>
+									<c:forEach items="${pageInfo.list}" var="obj" varStatus="count">
+										<tr>
+											<td>${count.count}</td>
+											<td>${obj.userName}</td>
+											<td>${obj.loginName}</td>
+											<td>${obj.sex}</td>
+											<td>${obj.phone}</td>
+											<td>${obj.mobile}</td>
+											<td>${obj.departmentName}</td>
+											<td>${obj.cancel}</td>
+											<td>${obj.systemUser}</td>
+											<td></td>
+										</tr>
+									</c:forEach>
+								</tbody>
 							</table>
+						</div>
+						<div class="col-xs-12 center">
+							<%@ include file="/WEB-INF/view/common/pagnation.jsp" %>
 						</div>
 					</div>
 				</div>

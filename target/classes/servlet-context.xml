@@ -20,10 +20,10 @@
 	<mvc:default-servlet-handler />
 
 	<mvc:interceptors>
-		<!--<mvc:interceptor>-->
-			<!--<mvc:mapping path="/**"/>-->
-			<!--<bean class="com.ssm.core.frame.interceptor.LoginInterceptor"/>-->
-		<!--</mvc:interceptor>-->
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="com.ssm.core.frame.interceptor.LoginInterceptor"/>
+		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
 			<bean class="com.ssm.core.frame.interceptor.ParameterInterceptor"/>

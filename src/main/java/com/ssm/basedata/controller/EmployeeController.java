@@ -50,25 +50,16 @@ public class EmployeeController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping("/main")
-	@RequiresPermissions("/employee/main")
-	public String main(Model model){
+//	@RequiresPermissions("/employee/main")
+	public String main(Employee employee,
+					   @RequestParam(defaultValue = "0", required = false) Integer pageNo, Model model){
 		String str = this.departmentService.showTreeByAll(null, DepartmentCons.OPEN_DEP);
+
+		PageInfo<Employee> pageInfo = this.employeeService.queryByPage(
+				employee, pageNo);
+		model.addAttribute("pageInfo", pageInfo);
 		model.addAttribute("departmentTreeData", str);
 		return "basedata/employee/listEmployee";
-	}
-	
-	/**
-	 * @param employee 用户
-	 * @return 用户列表
-	 * @Description:查询用户集合
-	 */
-	@RequestMapping("/findPage")
-	public@ResponseBody
-	PageInfo<Employee> findProjectList(Employee employee,
-									   @RequestParam(defaultValue = "0", required = false) Integer pageNo){
-		PageInfo<Employee> pageView = this.employeeService.queryByPage(
-				employee, pageNo);
-		return pageView;
 	}
 
 	/**
