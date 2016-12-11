@@ -1237,12 +1237,12 @@
       <workItem from="1480746328427" duration="1292000" />
       <workItem from="1480749910046" duration="2927000" />
       <workItem from="1480904440795" duration="1400000" />
-      <workItem from="1481253686058" duration="17127000" />
+      <workItem from="1481253686058" duration="17075000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26875000" />
+    <option name="totallyTimeSpent" value="26823000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1255,7 +1255,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1340,10 +1340,6 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="相关功能修复" />
-    <option name="LAST_COMMIT_MESSAGE" value="相关功能修复" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
