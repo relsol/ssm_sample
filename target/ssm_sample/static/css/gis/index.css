@@ -1,0 +1,1451 @@
+@charset "utf-8";
+/* CSS Document */
+a.redlink:link, a.redlink:hover {
+    color: #FF0000;
+    text-decoration: underline;
+}
+a.redlink02:link, a.redlink02:hover {
+    color: #FF0000;
+}
+
+.Pbutton {
+    background: url("http://images.zhcw.com/img/home/201209/zhcwbg_icon.png") no-repeat scroll left -194px transparent;
+    border: 0 none;
+    color: #4D667A;
+    font-size: 12px;
+    font-weight: bold;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    width: 38px;
+}
+.fL {
+    clear: none !important;
+    float: left;
+}
+.M10 {
+    font-size: 1px;
+    height: 10px;
+    line-height: 10px;
+    width: 100% !important;
+}
+.ullist01 {
+    clear: both;
+    padding: 0 14px;
+}
+.ullist01 li {
+    clear: both;
+    color: #666666;
+}
+.ullist01 li a {
+    color: #333333;
+}
+.ullist01 li .Ntitle {
+    float: left;
+    font-size: 14px;
+    height: 25px;
+    line-height: 25px;
+    overflow: hidden;
+    width: 310px;
+}
+.ullist01 li .Ntitle02 {
+    font-size: 14px;
+    height: 25px;
+    line-height: 25px;
+    overflow: hidden;
+    width: 266px;
+}
+.ullist01 li span {
+    color: #999999;
+    float: right;
+    font-size: 12px;
+    line-height: 25px;
+    width: 56px;
+}
+.PTabul {
+    background: url("http://images.zhcw.com/img/home/201209/combgline.gif") repeat-x scroll left -215px transparent;
+    height: 22px;
+    padding-top: 1px;
+}
+.PTabul li {
+    color: #FFFFFF;
+    float: left;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    width: 60px;
+}
+.PTabul li a {
+    color: #FFFFFF;
+}
+.PTabul li.on {
+    background: url("http://images.zhcw.com/img/home/201209/combgline.gif") repeat-x scroll left -184px transparent;
+    color: #CC0000;
+}
+.PTabul li.on a {
+    color: #CC0000;
+}
+.PListul {
+    overflow: hidden;
+    padding: 10px 0 0 10px;
+}
+.PListul li {
+    color: #333333;
+    height: 21px;
+    line-height: 21px;
+    overflow: hidden;
+    width: 180px;
+}
+.PListul li a {
+    color: #666666;
+}
+.Adblock {
+    background: none repeat scroll 0 0 #F9F9F9;
+    height: auto;
+    margin-top: 10px;
+}
+.Adblock02 {
+    height: 230px;
+    margin-top: 3px;
+}
+.clearH {
+    height: auto !important;
+}
+.sszct .ullist01 {
+    display: none;
+}
+.sszct .on {
+    display: block;
+}
+.cm_height_t .cht {
+    display: none;
+}
+.cm_height_t .on {
+    display: block;
+}
+.Kjvideo .kjt2 {
+    display: none;
+}
+.Kjvideo .on {
+    display: block;
+}
+
+
+.content {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    animation: 3s ease 0s normal forwards 1 running wrapper;
+   /*  background-image: url("../../images/gis/home.jpg"); */
+    top: 41px;
+    cursor: pointer;
+}
+
+
+.content .left {
+    float: left;
+    overflow: hidden;
+    width: 88%;
+	height:100%;
+}
+
+.content .left .map {
+    width: 100%%;
+	height:100%;
+}
+
+.content .right {
+    float: right;
+    overflow: hidden;
+    width: 12%;
+	padding-top: 60px;
+}
+
+
+.content .right .c_button {
+    background: url("../../images/gis/button.png") no-repeat scroll 0 -69px;
+    border: medium none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-weight: bolder;
+    height: 78px;
+    font-size : 20px;
+    margin: 5px 5px 5px -15px;
+    width: 191px;
+}
+
+
+.content .right .content_a {
+	background:url(../../images/gis/button.png) no-repeat scroll 0 -30px transparent;
+	padding: 12px 30px 12px 37px;
+	color: #FFFFFF;
+    font-weight: bolder;
+    position: absolute;
+    top: 1px;
+}
+
+.bottomDiv{
+	/*border-top: 1px dotted #3399fe;
+    margin-top: 8px;*/
+    width: 100%;
+    margin-top: -20px;
+    display: none;
+}
+
+.alarmInfo{
+	margin-left: 30px;
+    margin-right: 421px;
+}
+
+.alarmSearch .alarm{
+    float: left;
+    overflow: hidden;
+    width: 75%;
+    height: auto;
+	padding: 5px 5px 1px 5px;
+	border-right: 1px dotted #3399FE;
+}
+
+.alarmSearch .alarm .li_red{
+	border-bottom: 1px dotted #CCC;
+	background:#F00;
+	width:95%;
+	overflow:hidden;
+}
+
+.alarmSearch .alarm .li_yellow{
+	border-bottom: 1px dotted #CCC;
+	background:#FF0;
+	width:95%;
+	overflow:hidden;
+}
+
+
+.bottom{
+	/*border: 1px dotted;*/
+	height: 30px;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+}
+
+.bottom .btn{
+	border-top: 1px dotted #3399fe;
+    margin-top: 5px;
+    right: 0;
+    text-align: right;
+    width: 100%;
+}
+
+.searchbox{ 
+    background: url("../../images/search2013bg.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    bottom: 150px;
+    display: inline;
+    height: 30px;
+    position: fixed;
+    right: 60px;
+    width: 270px;
+}
+.searchbox .keyinput{ float:left; width:145px; height:25px; line-height:25px; margin:2px 5px 2px 3px; font-size:13px; border:0; color:#ccc}
+.searchbox .z_nw{ color:#999;}
+.searchbox .keybutton{width:36px; height:25px; line-height:25px; margin:4px 0 0 18px; border:0; background:none; cursor:pointer; color:#666;font-size:13px; }
+
+
+
+
+.ggblock {
+    height: 60px;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 960px;
+}
+.ggblock .left {
+    float: left;
+    margin-right: 10px;
+    overflow: hidden;
+    width: 207px;
+}
+.ggblock .mid {
+    background: url("http://images.zhcw.com/img/home/201209/ls4.gif") no-repeat scroll center center transparent;
+    float: left;
+    margin-right: 10px;
+    overflow: hidden;
+    width: 540px;
+}
+.ggblock .right {
+    float: right;
+    overflow: hidden;
+    width: 200px;
+}
+.ggblock02 {
+    clear: both;
+    height: 50px;
+    line-height: 21px;
+    margin: 0 auto 10px;
+    overflow: hidden;
+    padding: 0;
+    width: 960px;
+}
+.ggblock03 {
+    clear: both;
+    height: 43px;
+    line-height: 21px;
+    margin: 0 auto 5px;
+    overflow: hidden;
+    padding: 7px 5px 0;
+    width: 740px;
+}
+.ggblock04 {
+    clear: both;
+    height: 24px;
+    line-height: 21px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 5px 20px 0;
+    width: 920px;
+}
+.ggblock02 a, .ggblock03 a, .ggblock04 a {
+    color: #999999;
+}
+.ggblock04 a {
+    margin: 0 10px;
+}
+.ggblock02 ahover, .ggblock03 a:hover, .ggblock04 a:hover {
+    color: #000000;
+}
+.mainbox {
+    height: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 960px;
+}
+.MleftBox {
+    float: left;
+    width: 750px;
+}
+.TTBox {
+    clear: both;
+    height: auto;
+    overflow: hidden;
+}
+.TTBox .publicBox {
+    background: url("http://images.zhcw.com/img/home/201209/combgline.gif") repeat-x scroll left -52px transparent;
+    border: 1px solid #CCCCCC;
+    height: 28px;
+    line-height: 28px;
+}
+.TTBox .publicBox dt {
+    border-right: 1px solid #CCCCCC;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    width: 84px;
+}
+.TTBox .publicBox dd {
+    float: left;
+    height: 28px;
+    overflow: hidden;
+    padding: 0 10px;
+}
+.TTBox .Notice {
+    float: left;
+    width: 308px;
+}
+.TTBox .Notice dd {
+    width: 203px;
+}
+.TTBox .Hotword {
+    float: right;
+    width: 428px;
+}
+.TTBox .Hotword dd {
+    width: 323px;
+}
+.TTBox .TTnews {
+    clear: both;
+    font-family: "黑体";
+    font-size: 33px;
+    font-weight: bold;
+    height: 33px;
+    overflow: hidden;
+    padding-top: 10px;
+    text-align: center;
+    width: 750px;
+}
+.Mleft {
+    float: left;
+    width: 310px;
+}
+.focusbox {
+    border: 1px solid #CCCCCC;
+    height: 226px;
+    overflow: hidden;
+    padding: 1px;
+    width: 306px;
+}
+.hot_area {
+    clear: both;
+    height: auto;
+    margin-top: 6px;
+    overflow: hidden;
+}
+.hot_area dl {
+    height: 22px;
+    margin-top: 4px;
+}
+.hot_area dt {
+    float: left;
+    padding-right: 10px;
+    width: 38px;
+}
+.hot_area dd {
+    color: #666666;
+    height: 22px;
+    line-height: 22px;
+    overflow: hidden;
+    width: 250px;
+}
+.hot_area dd a {
+    color: #666666;
+}
+.Mmid {
+    float: right;
+    width: 430px;
+}
+.subheading {
+    background-color: #FFFFFF;
+    margin: 0;
+}
+.subheading dt {
+    overflow: hidden;
+    padding: 8px 0 2px;
+}
+.subheading dt h2 {
+    text-align: center;
+    white-space: nowrap;
+}
+.subheading dt h2 a {
+    color: #000000;
+    font-family: "宋体";
+    font-size: 18px;
+    font-weight: bold;
+}
+.subheading dt h2 a:hover {
+    color: #CC0000;
+}
+.subheading dt a:hover {
+    color: #FF0000;
+    text-decoration: underline;
+}
+.subheading dd {
+    line-height: 23px;
+    padding: 3px 10px 0 8px;
+    text-align: center;
+}
+.subheading dd a {
+    color: #999999;
+}
+.subheading dd a:hover {
+    color: #000000;
+    text-decoration: underline;
+}
+.subheading dd .TTnews {
+    float: left;
+    font-size: 14px;
+    height: 25px;
+    overflow: hidden;
+    text-align: left;
+    white-space: nowrap;
+    width: 203px;
+}
+.subheading dd .TTnews a {
+    color: #333333;
+}
+.subheading dd .TTnews a:hover {
+    color: #CC0000;
+    font-size: 14px;
+    text-decoration: underline;
+}
+.MrightBox {
+    float: right;
+    width: 200px;
+}
+.Rblock {
+    background: none repeat scroll 0 0 #F9F9F9;
+    padding-bottom: 3px;
+}
+.Rhb {
+    background: url("http://images.zhcw.com/img/home/201209/zhcwbg_01.png") no-repeat scroll left -20px #F9F9F9;
+}
+.Rhb h2 {
+    color: #333333;
+    font-size: 12px;
+    height: 30px;
+    line-height: 32px;
+    overflow: hidden;
+    padding: 0 15px 0 13px;
+    text-align: left;
+}
+.Rhb h2 a {
+    color: #333333;
+}
+.more2 {
+    display: inline;
+    float: right;
+    margin: -20px 10px 0 0;
+}
+.more2 a {
+    color: #999999;
+}
+.Rhb .Kjvideo {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CCCCCC;
+    height: 136px;
+    margin: 0 4px;
+    padding: 1px;
+}
+.Rhb .Kjvideo .videoimg {
+    height: 50px;
+    margin: 10px auto 0;
+    overflow: hidden;
+    width: 170px;
+}
+.Rhb .Kjvideo .Listul {
+    overflow: hidden;
+    padding: 10px 0 0 10px;
+}
+.Rhb .Kjvideo .Listul li {
+    color: #666666;
+    height: 21px;
+    line-height: 21px;
+    overflow: hidden;
+    width: 160px;
+}
+.Rhb .Kjvideo .Listul li a {
+    color: #666666;
+}
+.kaiJiang {
+    padding: 6px 5px 0;
+}
+.kaiJiang h2 {
+    color: #E1081F;
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 3px;
+    position: relative;
+    width: 235px;
+}
+.kaiJiang h2 span {
+    background: url("http://images.zhcw.com/img/home/201209/kaijiang.jpg") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.kaiJiang .more1 {
+    color: #666666;
+    display: inline;
+    float: right;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 14px;
+    margin: -20px 0 0;
+}
+.kaiJiang .more1 a {
+    color: #666666;
+    text-decoration: underline;
+}
+.kjT {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #FF0000 -moz-use-text-color;
+    border-image: none;
+    border-style: dotted none;
+    border-width: 1px medium;
+    height: 80px;
+    padding-top: 10px;
+}
+.kjT li {
+    height: 25px;
+    line-height: 24px;
+    overflow: hidden;
+    position: relative;
+}
+.kjT li strong {
+    color: #333333;
+    display: inline;
+    float: left;
+    font-size: 12px;
+    text-align: center;
+    width: 52px;
+}
+.kjT li strong a {
+    color: #333333;
+}
+.kjT li em {
+    display: inline;
+    float: left;
+    font-style: normal;
+    width: 61px;
+}
+.kjT li span {
+    background: url("http://images.zhcw.com/img/home/201209/zhcwbg_icon.png") repeat scroll 0 0 transparent;
+    color: #FFFFFF;
+    display: inline;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    height: 19px;
+    line-height: 19px;
+    margin: 2px 3px 0 0;
+    text-align: center;
+    width: 19px;
+}
+.kjT li span.rq1 {
+    background-position: -50px -525px;
+}
+.kjT li span.bq1 {
+    background-position: -79px -525px;
+}
+.kjT li .riQi {
+    background: none repeat scroll 0 0 transparent;
+    color: #333333;
+    display: inline;
+    float: left;
+    font-family: "宋体";
+    font-size: 12px;
+    line-height: 24px;
+    margin: 0;
+    text-align: left;
+    width: 39px;
+}
+.hz1 {
+    background: url("http://images.zhcw.com/img/home/201209/zhcwbg_icon.png") repeat scroll 0 0 transparent;
+    height: 20px;
+    overflow: hidden;
+    position: absolute;
+    text-indent: -9999px;
+    top: 1px;
+    width: 18px;
+}
+.sjh {
+    background-position: 0 -495px;
+    right: 96px;
+    width: 60px;
+}
+.xx {
+    background-position: -70px -495px;
+    right: 68px;
+}
+.tb {
+    background-position: -98px -495px;
+    right: 46px;
+}
+.sj {
+    background-position: -126px -495px;
+    right: 24px;
+}
+.sp {
+    background-position: -154px -495px;
+    right: 2px;
+}
+.ad1 {
+    height: 90px;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 960px;
+}
+.xinWen {
+}
+.xinWen h2 {
+    background: url("http://images.zhcw.com/img/home/201209/combgline.gif") repeat-x scroll 0 -102px transparent;
+    border-top: 2px solid #FF0000;
+    color: #000000;
+    font-size: 14px;
+    height: 40px;
+    line-height: 38px;
+    overflow: hidden;
+}
+.xinWen h2 span {
+    background: url("http://images.zhcw.com/img/home/201209/zhcwbg_icon.png") no-repeat scroll 0 -311px transparent;
+    display: inline;
+    float: left;
+    height: 18px;
+    margin: 10px 7px 0 15px;
+    overflow: hidden;
+    width: 13px;
+}
+.xinWen .more1 {
+    display: inline;
+    float: right;
+    margin: -28px 0 0;
+}
+.more1 li {
+    border-left: 1px solid #666666;
+    color: #000000;
+    display: inline;
+    float: left;
+    line-height: 14px;
+    margin: 0 9px 0 0;
+    padding: 0 0 0 9px;
+}
+.more1 li.first {
+    border: medium none;
+    padding-left: 0;
+}
+.more1 li a {
+    color: #000000;
+}
+.b1 {
+    border: 1px solid #DDDDDD;
+    height: 620px;
+    margin-bottom: 0;
+}
+.b1 h3 {
+    clear: both;
+    color: #000000;
+    font-size: 14px;
+    height: 29px;
+    line-height: 32px;
+    overflow: hidden;
+    padding: 13px 0 0 15px;
+    text-align: left;
+}
+.b1 h3 a {
+    color: #000000;
+}
+.b1 img {
+    border: 1px solid #333333;
+    display: inline;
+    float: left;
+    height: 90px;
+    margin: 8px 15px 0 12px;
+    width: 120px;
+}
+.b1t {
+    color: #666666;
+    display: inline;
+    float: right;
+    font-size: 12px;
+    line-height: 21px;
+    padding: 8px 12px 0 0;
+    width: 145px;
+}
+.b1t a {
+    color: #666666;
+}
+.b1 ul {
+    clear: both;
+    padding: 12px 0 0 14px;
+}
+.b1 li {
+    color: #666666;
+    font-size: 14px;
+    height: 25px;
+    line-height: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.b1 li a {
+    color: #333333;
+}
+.b1 h4 {
+    background: url("http://images.zhcw.com/img/home/201209/combgline.gif") repeat-x scroll left -50px transparent;
+    border-bottom: 1px solid #CCCCCC;
+    clear: both;
+    font-size: 14px;
+    height: 29px;
+    position: relative;
+}
+.b1 h4 span {
+    display: block;
+    float: left;
+    line-height: 30px;
+    padding: 0 0 0 15px;
+}
+.b1 h4 ul {
+    bottom: -1px;
+    clear: none;
+    padding: 0;
+    position: absolute;
+    right: 0;
+}
+.b1 h4 ul li {
+    color: #666666;
+    float: left;
+    font-weight: normal;
+    line-height: 30px;
+    text-align: center;
+    width: 69px;
+}
+.b1 h4 ul li a {
+    color: #000000;
+}
+.b1 h4 ul li.on {
+    background: url("http://images.zhcw.com/img/home/201209/zhcwbg_icon.png") no-repeat scroll left -593px transparent;
+    color: #CC0000;
+    font-weight: bold;
+}
+.b1 h4 ul li.on a {
+    color: #CC0000;
+}
+.b1 dl {
+    height: 64px;
+    overflow: hidden;
+    padding: 14px 0 0 14px;
+}
+.b1 dl dt {
+    float: left;
+    margin-right: 14px;
+    overflow: hidden;
+    width: 84px;
+}
+.b1 dl dt img {
+    height: 60px;
+    margin: 0;
+    width: 80px;
+}
+.b1 dl dd {
+    float: left;
+    line-height: 21px;
+    width: 186px;
+}
+.b1 dl dd a {
+    color: #999999;
+}
+.gy_height {
+    height: 225px;
+    margin-bottom: 10px;
+}
+.gy_height h3 {
+    padding-top: 5px;
+}
+.cm_height {
+    height: 270px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.caiZhong {
+    height: 310px;
+}
+.caiZhong h3 {
+    border-bottom: 1px solid #CCCCCC;
+    height: 16px;
+    margin-bottom: 15px;
+    padding: 10px 0 4px;
+}
+.caiZhong h3 span {
+    color: #000000;
+    display: block;
+    float: left;
+    font-size: 14px;
+    text-indent: 35px;
+}
+.caiZhong h3 ul {
+    float: right;
+}
+.caiZhong h3 ul li {
+    border-left: 1px solid #999999;
+    display: inline;
+    float: left;
+    font-size: 12px;
+    font-weight: normal;
+}
+.caiZhong h3 ul li.first {
+    border: medium none;
+}
+.caiZhong h3 ul li a {
+    color: #999999;
+    padding: 0 8px;
+}
+.sszc {
+    clear: both;
+    height: 260px;
+    width: 100%;
+}
+.sszc h3 {
+    border-bottom: 1px solid #CCCCCC;
+    height: 30px;
+    margin-bottom: 15px;
+    position: relative;
+}
+.sszc h3 ul {
+    height: 31px;
+    left: 20px;
+    position: absolute;
+}
+.sszc h3 ul li {
+    background: url("http://images.zhcw.com/img/home/201209/zhcwbg_icon.png") no-repeat scroll -99px -550px transparent;
+    float: left;
+    font-size: 14px;
+    font-weight: normal;
+    height: 31px;
+    line-height: 30px;
+    margin-right: 1px;
+    text-align: center;
+    width: 89px;
+}
+.sszc h3 ul li.on {
+    background: url("http://images.zhcw.com/img/home/201209/zhcwbg_icon.png") no-repeat scroll left -550px transparent;
+    font-weight: bold;
+}
+.moreSS {
+    background: url("http://images.zhcw.com/img/home/201209/zhcwbg_icon.png") no-repeat scroll left -631px transparent;
+    clear: both;
+    color: #666666;
+    height: 45px;
+    line-height: 22px;
+    padding: 5px 20px 0;
+    position: relative;
+    width: 390px;
+}
+.moreSS a {
+    color: #666666;
+}
+.moreSS .more {
+    bottom: 0;
+    color: #999999;
+    position: absolute;
+    right: 25px;
+}
+.CMZJdl {
+    float: left;
+    overflow: hidden;
+    padding: 0 0 0 10px;
+    width: 122px;
+}
+.CMZJdl a {
+    color: #999999;
+    line-height: 21px;
+    white-space: nowrap;
+    word-break: normal;
+    word-wrap: break-word;
+}
+.CMZJdl dt {
+}
+.CMZJdl dt img {
+    border: 1px solid #000000;
+}
+.CMZJdl dt span {
+    display: block;
+    height: 28px;
+    line-height: 28px;
+    overflow: hidden;
+    padding-top: 5px;
+    text-align: center;
+    width: 120px;
+}
+.CMZJdl dd {
+    background: none repeat scroll 0 0 #F9F9F9;
+    color: #999999;
+    padding: 6px 0 6px 10px;
+}
+.SMSh3 {
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 20px;
+}
+.SMSul {
+    border: 1px solid #DDDDDD;
+    padding: 5px 0 3px 10px;
+}
+.SMSul li {
+    font-size: 14px;
+    height: 25px;
+    line-height: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.SMSul li a {
+    color: #666666;
+}
+.SMScx {
+    background: none repeat scroll 0 0 #F9F9F9;
+    height: 42px;
+    line-height: 21px;
+    padding: 10px 12px 0 0;
+}
+.SMScx span {
+    color: #666666;
+}
+.SMScx a {
+    color: #999999;
+}
+.b2 {
+    height: 190px;
+    margin-bottom: 10px;
+}
+.b2b {
+    height: 70px;
+    overflow: hidden;
+}
+.b2 h2 {
+    height: 35px;
+    line-height: 35px;
+}
+.b2b img {
+    display: inline;
+    float: left;
+    height: 60px;
+    margin: 8px 0 0 8px;
+    width: 80px;
+}
+.b2b p {
+    color: #999999;
+    display: inline;
+    float: right;
+    font-size: 12px;
+    line-height: 21px;
+    margin: 6px 8px 0 0;
+    width: 97px;
+}
+.b2b p a {
+    color: #999999;
+}
+.b2b p strong, .b2b p strong a {
+    color: #666666;
+}
+.tiLun {
+    background: url("http://images.zhcw.com/img/home/201209/combgline.gif") repeat-x scroll 0 -266px transparent;
+    border-top: 2px solid #FF0000;
+}
+.tiJian {
+}
+.tiJian h3, .leiTai h3 {
+    color: #000000;
+    font-size: 14px;
+    height: 39px;
+    line-height: 50px;
+    overflow: hidden;
+    text-indent: 20px;
+}
+.tiJianT, .leiTaiT {
+    border: 1px solid #DDDDDD;
+    height: 168px;
+}
+.yaoJiang {
+    display: inline;
+    float: left;
+    margin-left: 20px;
+    text-align: center;
+    width: 130px;
+}
+.yaoJiang .PTabul {
+    height: 21px;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+.yaoJiang .PTabul li {
+    width: 33.3%;
+}
+.yjt {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: -moz-use-text-color #CCCCCC #CCCCCC;
+    border-image: none;
+    border-right: 1px solid #CCCCCC;
+    border-style: none solid solid;
+    border-width: medium 1px 1px;
+    height: 100px;
+}
+.yjt .imgt {
+    display: none;
+}
+.yjt .on {
+    display: block;
+}
+.yjt img {
+    height: 90px;
+    margin: 4px auto 0;
+    width: 120px;
+}
+.yaoJiang h4 {
+    color: #666666;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 34px;
+}
+.shiGua {
+    display: inline;
+    float: left;
+    margin-left: 20px;
+    text-align: center;
+    width: 130px;
+}
+.shiGua .PTabul {
+    height: 21px;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+.shiGua .PTabul li {
+    width: 50%;
+}
+.yjt {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: -moz-use-text-color #CCCCCC #CCCCCC;
+    border-image: none;
+    border-right: 1px solid #CCCCCC;
+    border-style: none solid solid;
+    border-width: medium 1px 1px;
+    height: 100px;
+}
+.yjt .imgt {
+    display: none;
+}
+.yjt .on {
+    display: block;
+}
+.yjt img {
+    height: 90px;
+    margin: 4px auto 0;
+    width: 120px;
+}
+.shiGua h4 {
+    color: #666666;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 34px;
+}
+.leiTaiT {
+    height: 53px;
+    padding-top: 5px;
+}
+.lunTan h3 {
+    border-bottom: 1px solid #CCCCCC;
+    color: #000000;
+    font-size: 14px;
+    height: 38px;
+    line-height: 50px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    text-indent: 35px;
+}
+.ltImg {
+    display: inline;
+    float: left;
+    padding: 0 0 0 10px;
+    width: 120px;
+}
+.ltImg img {
+    height: 80px;
+    margin-bottom: 5px;
+    width: 120px;
+}
+.tel {
+    background: url("http://images.zhcw.com/img/home/201209/tel.jpg") no-repeat scroll 0 0 transparent;
+    height: 260px;
+    margin: 0 0 0 5px;
+    padding: 3px;
+    width: 190px;
+}
+.b3 h2 {
+    height: 42px;
+    line-height: 47px;
+    overflow: hidden;
+}
+.tel p {
+    color: #666666;
+    font-size: 12px;
+    line-height: 21px;
+    padding: 10px;
+}
+.tel p strong {
+    color: #FF0000;
+    font-weight: normal;
+}
+.tel ul {
+    padding: 3px 0 0 18px;
+}
+.tel li {
+    background: url("http://images.zhcw.com/img/home/201209/zhcwbg_icon.png") no-repeat scroll 0 -237px transparent;
+    color: #4D667A;
+    display: inline;
+    float: left;
+    font-size: 12px;
+    height: 22px;
+    line-height: 24px;
+    margin: 0 11px 10px 0;
+    overflow: hidden;
+    text-align: center;
+    width: 69px;
+}
+.tel li a {
+    color: #4D667A;
+    display: block;
+}
+.lianJie {
+    background: none repeat scroll 0 0 #F9F9F9;
+    padding: 10px 0;
+}
+.lianJie strong {
+    background: url("http://images.zhcw.com/img/home/201209/zhcwbg_icon.png") no-repeat scroll 15px -703px transparent;
+    color: #666666;
+    display: inline;
+    float: left;
+    font-size: 12px;
+    height: 21px;
+    line-height: 21px;
+    text-align: right;
+    width: 98px;
+}
+.lianJie strong a {
+    color: #666666;
+}
+.ljT {
+    color: #999999;
+    display: inline;
+    float: left;
+    line-height: 21px;
+    overflow: hidden;
+    position: relative;
+    width: 852px;
+}
+.more3 {
+    bottom: 0;
+    position: absolute;
+    right: 0;
+}
+.ljT a {
+    color: #999999;
+    padding: 0 6px;
+    white-space: nowrap;
+    word-break: normal;
+    word-wrap: break-word;
+}
+.adl, .adr {
+    display: inline;
+    float: left;
+    height: 90px;
+    overflow: hidden;
+    width: 730px;
+}
+.adr {
+    width: 230px;
+}
+.sp0 {
+    display: inline;
+    float: left;
+    height: 42px;
+    margin-left: 10px;
+}
+.sp1 {
+    display: inline;
+    float: right;
+    height: 42px;
+}
+.sp0 select {
+    width: 90px;
+}
+.gd {
+    width: 8000%;
+}
+.gd1, .gd2 {
+    display: inline;
+    float: left;
+}
+.danHang {
+    height: 21px;
+    overflow: hidden;
+}
+.touTu {
+    background: url("http://images.zhcw.com/img/home/201302/toutu00.jpg") no-repeat scroll center top transparent;
+    margin: 0 auto;
+    width: 100%;
+}
+.ttnone {
+    background: none repeat scroll 0 0 transparent;
+}
+.ttnone .ttnr {
+    display: none;
+}
+.ttx .topnav {
+    width: 960px;
+}
+.ttnr {
+    height: 75px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    width: 960px;
+}
+.ttnr a {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+.ttnr span {
+    cursor: pointer;
+    height: 16px;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    text-indent: -9999px;
+    top: 5px;
+    width: 16px;
+}
+.xinWen .gy_height {
+    margin-bottom: 0;
+}
+.mb10 {
+    margin-bottom: 10px;
+}
+.mt10 {
+    margin-top: 10px;
+}
+.danHang a {
+    color: #333333;
+}
+.mb10 {
+    margin-bottom: 10px;
+}
+.PTabul li span, .b1 h4 ul li span {
+    background: url("http://images.zhcw.com/img/home/201211/tabtext.gif") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+.PTabul li span.sp1 {
+    background-position: -60px -75px;
+}
+.PTabul li.on span.sp1 {
+    background-position: 0 -75px;
+}
+.PTabul li span.sp2 {
+    background-position: -60px -97px;
+}
+.PTabul li.on span.sp2 {
+    background-position: 0 -97px;
+}
+.PTabul li span.sp3 {
+    background-position: -60px -119px;
+}
+.PTabul li.on span.sp3 {
+    background-position: 0 -119px;
+}
+.b1 h4 ul li span.sp1 {
+    background-position: 0 0;
+}
+.b1 h4 ul li.on span.sp1 {
+    background-position: -69px 0;
+}
+.b1 h4 ul li span.sp2 {
+    background-position: 0 -25px;
+}
+.b1 h4 ul li.on span.sp2 {
+    background-position: -69px -25px;
+}
+.b1 h4 ul li span.sp3 {
+    background-position: 0 -50px;
+}
+.b1 h4 ul li.on span.sp3 {
+    background-position: -69px -50px;
+}
+.ggblock04 li {
+    display: inline;
+    float: left;
+}
+.PTabul li span.sp4 {
+    background-position: -68px -75px;
+}
+.PTabul li.on span.sp4 {
+    background-position: -8px -75px;
+}
+.PTabul li span.sp5 {
+    background-position: -68px -119px;
+}
+.PTabul li.on span.sp5 {
+    background-position: -8px -119px;
+}
+.PTabul li span.sp6 {
+    background-position: -68px -97px;
+}
+.PTabul li.on span.sp6 {
+    background-position: -8px -97px;
+}
+.desktopShortcut {
+    height: 330px;
+    left: 0;
+    padding: 0;
+    position: fixed;
+    text-align: center;
+    width: 24px;
+}
+.desktopShortcutInner {
+    height: 88px;
+    margin-top: 58px;
+    width: 24px;
+}
+.dxfw {
+    color: #666666;
+    line-height: 22px;
+    overflow: hidden;
+}
+.dxfw a {
+    color: #666666;
+}
+.dxfw table {
+    margin: 0 auto;
+}
+.dxfw .dxfw_div {
+    height: 118px;
+    line-height: 20px;
+    margin: 5px 6px 6px;
+}
+.dxfw .dxfw_span1 {
+    color: #CC0000;
+    font-weight: bold;
+}
+.dxfw .dxfw_span2 {
+    color: #1F376D;
+    font-weight: bold;
+}
+.bdshare_t .bds_more {
+    background: none repeat scroll 0 0 transparent !important;
+    display: block;
+    height: 40px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: center !important;
+    width: 60px !important;
+}
+.bdshare_t span.bds_more {
+    background: none repeat scroll 0 0 transparent !important;
+    display: block;
+}
+#bdshare a, #bdshare span {
+    background: none repeat scroll 0 0 transparent !important;
+    display: block;
+    float: left;
+    margin: 5px 0 0;
+    width: 70px;
+}
+
+.faultRed td span {
+    color: #FF0000;
+}
+
+.faultRed td a {
+    color: #FF0000;
+}
+
+.faultYellow td span {
+    color: #FF0000;
+}
+
+.faultYellow td a {
+    color: #FF0000;
+}

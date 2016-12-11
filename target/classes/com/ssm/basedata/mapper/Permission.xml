@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.basedata.dao.PermissionMapper">
+	
+	<resultMap type="com.ssm.basedata.entity.Permission" id="PermissionMap">
+		<id column="c_id" jdbcType="INTEGER" property="id"/>
+		<result column="C_NAME" jdbcType="VARCHAR" property="name"/>
+		<result column="C_URI" jdbcType="VARCHAR" property="uri"/>
+		<result column="C_PID" jdbcType="INTEGER" property="pid"/>
+		<result column="C_REMARK" jdbcType="VARCHAR" property="remark"/>
+		<result column="C_ORDER" jdbcType="INTEGER" property="order"/>
+		<result column="C_LEVEL" jdbcType="INTEGER" property="level"/>
+		<result column="C_PROJECT_ID" jdbcType="INTEGER" property="projectId"/>
+	</resultMap>
+	
+	<select id="countList" parameterType="hashmap" resultType="long">
+		select count(p.c_id) <include refid="pagefind"/>
+	</select>
+	
+	<select id="findPageList" parameterType="hashmap" resultMap="PermissionMap">
+		select p.*
+		<include refid="pagefind"/>
+		order by p.c_order, p.c_id
+	</select>
+	
+	<sql id="pagefind">
+		from 
+			t_permission p
+		<if test="employeeId != null or roleId != null">			
+			left join t_role_permission rp on p.c_id = rp.c_permission_id
+			<if test="employeeId != null">	
+				left join t_role_emp re on rp.c_role_id = re.c_role_id
+			</if>
+		</if>
+		<if test="projectCode != null and projectCode != ''">
+			left join t_project pt on p.c_project_id = pt.c_id
+		</if>
+		
+        <where>
+        	<if test="id != null ">and p.c_id = #{id, jdbcType=INTEGER}</if>
+			<if test="level != null">and p.c_level = #{level, jdbcType=NUMERIC}</if>
+			<if test="pid != null">and p.c_pid = #{pid, jdbcType=NUMERIC}</if>
+			<if test="projectId != null">and p.c_project_id = #{projectId, jdbcType=INTEGER}</if>
+        	<if test="employeeId != null">and re.c_employee_id = #{employeeId, jdbcType=INTEGER}</if>
+			<if test="projectCode != null and projectCode != ''">and pt.c_code = #{projectCode, jdbcType=VARCHAR}</if>
+        	<if test="roleId != null ">and rp.c_role_id = #{roleId, jdbcType=INTEGER}</if>
+        </where>
+	</sql>
+	
+	<select id="findById" parameterType="hashmap" resultMap="PermissionMap">
+		select t.* from T_PERMISSION t where t.c_id = #{id, jdbcType=INTEGER}
+	</select>
+	
+	<insert id="addOne" parameterType="com.ssm.basedata.entity.Permission" useGeneratedKeys="true" keyProperty="id" >
+       	<selectKey keyProperty="id" resultType="int" order="BEFORE">
+    		select common_sequence.nextval from dual
+    	</selectKey>
+        insert into T_PERMISSION
+        	(
+        			C_ID,
+	        		C_NAME,
+	        		C_URI,
+	        		C_PID,
+	        		C_REMARK,
+	        		C_ORDER,
+	        		C_LEVEL,
+	        		C_PROJECT_ID
+        	)  
+            values
+            (
+            		 #{id, jdbcType=INTEGER} ,
+	        		 #{name, jdbcType=VARCHAR} ,
+	        		 #{uri, jdbcType=VARCHAR} ,
+	        		 #{pid, jdbcType=INTEGER} ,
+	        		 #{remark, jdbcType=VARCHAR} ,
+	        		 #{order, jdbcType=INTEGER} ,
+	        		 #{level, jdbcType=INTEGER} ,
+	        		 #{projectId, jdbcType=INTEGER} 
+            )  
+    </insert>
+    
+    <update id="updateOne" parameterType="com.ssm.basedata.entity.Permission" >
+        update T_PERMISSION set 
+        	C_NAME = #{name, jdbcType=VARCHAR},
+        	C_URI = #{uri, jdbcType=VARCHAR},
+        	C_PID = #{pid, jdbcType=INTEGER},
+        	C_REMARK = #{remark, jdbcType=VARCHAR},
+        	C_ORDER = #{order, jdbcType=INTEGER},
+        	C_LEVEL = #{level, jdbcType=INTEGER},
+        	C_PROJECT_ID = #{projectId, jdbcType=INTEGER}
+        where c_id =  #{id, jdbcType=INTEGER}
+    </update>
+    
+    <delete id="delById" parameterType="Integer">
+        delete from T_PERMISSION where c_id = #{id, jdbcType=INTEGER}
+	</delete>
+
+</mapper>

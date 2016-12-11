@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.basedata.dao.RoleEmpMapper">
+	
+	<resultMap type="com.ssm.basedata.entity.RoleEmp" id="RoleEmpMap">
+		<id column="c_id" jdbcType="INTEGER" property="id"/>
+		<result column="C_ROLE_ID" jdbcType="NUMERIC" property="roleId"/>
+		<result column="C_EMPLOYEE_ID" jdbcType="NUMERIC" property="employeeId"/>
+	</resultMap>
+	
+	 <delete id="deleteByParams" parameterType="hashmap">
+        delete from T_ROLE_EMP re
+         <where>
+        	<if test="employeeId != null ">and re.c_employee_id = #{employeeId, jdbcType=INTEGER}</if>
+			<if test="roleId != null ">and re.c_role_id = #{roleId, jdbcType=INTEGER}</if>
+			<if test="projectId != null "> and
+				exists (select 1 from T_ROLE r where re.c_role_id = r.c_id
+				and r.c_project_id = #{projectId, jdbcType=INTEGER})
+			</if>
+        </where>
+	</delete>
+	
+	<select id="countList" parameterType="hashmap" resultType="long">
+		select count(t.c_id) <include refid="pagefind"/>
+	</select>
+	
+	<select id="findPageList" parameterType="hashmap" resultMap="RoleEmpMap">
+		select t.*
+		<include refid="pagefind"/>
+	</select>
+	
+	<sql id="pagefind">
+		from T_ROLE_EMP t 
+        <where>
+        	<if test="id != null ">and t.c_id = #{id, jdbcType=INTEGER}</if>
+        </where>
+	</sql>
+	
+	<select id="findById" parameterType="Integer" resultMap="RoleEmpMap">
+		select t.* from T_ROLE_EMP t where t.c_id = #{id, jdbcType=INTEGER}
+	</select>
+	
+	<insert id="addOne" parameterType="com.ssm.basedata.entity.RoleEmp" useGeneratedKeys="true" keyProperty="id" >
+		<selectKey keyProperty="id" resultType="int" order="BEFORE">
+    		select common_sequence.nextval from dual
+    	</selectKey>
+		
+        insert into T_ROLE_EMP
+        	(
+    			C_ID,
+        		C_ROLE_ID,
+        		C_EMPLOYEE_ID
+        	)  
+            values
+            (
+            	#{id, jdbcType=INTEGER},
+				#{roleId, jdbcType=NUMERIC} ,
+				#{employeeId, jdbcType=NUMERIC} 
+            )  
+    </insert>
+    
+    <update id="updateOne" parameterType="com.ssm.basedata.entity.RoleEmp" >
+        update T_ROLE_EMP set 
+        	C_ID = #{id, jdbcType=INTEGER},
+        	C_ROLE_ID = #{roleId, jdbcType=NUMERIC},
+        	C_EMPLOYEE_ID = #{employeeId, jdbcType=NUMERIC}
+        where c_id =  #{id, jdbcType=INTEGER}
+    </update>
+    
+    <delete id="delById" parameterType="Integer">
+        delete from T_ROLE_EMP where c_id = #{id, jdbcType=INTEGER}
+	</delete>
+	
+</mapper>

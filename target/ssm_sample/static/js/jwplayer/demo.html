@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<script type='text/javascript' src='/jwplayer/jwplayer.js'></script>
+	</head>
+	<body>
+		
+		<div id='mediaplayer2'>The player will be placed here</div>
+
+
+
+		<script type="text/javascript">	
+			var test = jwplayer('mediaplayer2').setup({
+				flashplayer: "player.swf", 
+				width: '80%',
+				height: '80%',
+				'playlist': [{
+					'file': '/videos/111.flv', 
+					'image': '/thumbs/video.jpg',
+					'title': 'The first video'
+				},{ 
+					'file': '/videos/google.mp4', 
+					'image': '/thumbs/video.jpg',
+					'title': 'The second video'
+				},{
+					provider: 'rtmp',
+					file:'zhongcai3',
+					streamer: 'rtmp://zhongcai.fastcdn.com/zhongcai/',
+				},{
+					'file': '/videos/111.flv', 
+					'image': '/thumbs/video.jpg',
+					'title': 'The first video'
+				},{ 
+					'file': '/videos/google.mp4', 
+					'image': '/thumbs/video.jpg',
+					'title': 'The second video'
+				}],
+				'menu':false,
+				autostart:true,
+				'playlist.position':'right',
+				events:{
+					onPause:function(){jwplayer('mediaplayer2').play(true);}
+				}
+			});
+			
+			
+
+
+			
+			
+			
+		</script>
+	</body>
+</html>

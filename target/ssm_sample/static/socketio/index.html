@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8" />
+
+<title>Demo Chat</title>
+
+<style>
+body {
+	margin: 0;
+	overflow: hidden;
+	background: #fff;
+}
+
+#map {
+	position: relative;
+	height: 520px;
+	border: 1px solid #3473b7;
+}
+
+#toolbar {
+	position: relative;
+	height: 33px;
+	padding-top: 5;
+}
+</style>
+
+<!--[if lt IE 8 ]><script src="js/json2.js"></script><![endif]-->
+
+<script src="js/socket.io/socket.io.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/jquery-1.7.2.min.js"></script>
+<script
+	src='http://192.168.31.249:8090/iserver/iClient/forJavaScript/libs/SuperMap.Include.js'></script>
+
+<script>
+	var socket, isMonitor = false;
+
+	/*****************************socket操作******************/
+	socket = io.connect('http://127.0.0.1:9092');
+	socket.on('chatevent', function(data) {
+		if (isMonitor) {
+			addData(data);
+		}
+	});
+	socket.on('disconnect', function() {
+		alert("和服务器链接中断！！！请刷新页面重新加载！！！");
+	});
+
+	//停止监控
+	function stopMonitor() {
+		isMonitor = false;
+	}
+	//开始监控
+	function monitor() {
+		var imeiCode = $("#imei").val();
+		if (imeiCode == null || imeiCode == "") {
+			alert("监控imeicode码不能为空！");
+			return false;
+		}
+
+		$
+				.ajax({
+					url : 'http://127.0.0.1:8080/jz-mis/mobileDeviceMove/monitorByImeiCode.html',
+					data : {
+						"imeiCode" : imeiCode
+					},
+					dataType : 'json',
+					success : function(json) {
+						if (json.success) {
+							isMonitor = true;
+						} else {
+							stopMonitor();
+						}
+					}
+				});
+	}
+
+	/*****************************地图操作******************/
+	var map, layer, pointVector, dataAdded = false, host = document.location
+			.toString().match(/file:\/\//) ? "http://192.168.31.249:8090"
+			: 'http://192.168.31.249:8090';
+	url = host + "/iserver/services/map-world/rest/maps/World";
+	function init() {
+		map = new SuperMap.Map("map", {
+			controls : [ new SuperMap.Control.Zoom(),
+					new SuperMap.Control.Navigation(),
+					new SuperMap.Control.LayerSwitcher() ]
+		});
+		layer = new SuperMap.Layer.TiledDynamicRESTLayer("World", url, null, {
+			maxResolution : "auto"
+		});
+		layer.events.on({
+			"layerInitialized" : addLayer
+		});
+		vector = new SuperMap.Layer.Vector("vector");
+	}
+
+	function addLayer() {
+
+		map.addLayers([ layer, vector ]);
+		//显示地图范围
+		map.setCenter(new SuperMap.LonLat(0, 0), 0);
+	}
+
+	function addData(data) {
+		if (data == null || data == '' || data.axisY == null
+				|| data.axisY == '' || data.axisX == null || data.axisX == '') {
+			return false;
+		}
+		vector.removeAllFeatures();
+		//点
+		var point = new SuperMap.Geometry.Point(data.axisY, data.axisX);
+		var pointlayer = new SuperMap.Feature.Vector(point);
+		pointlayer.style = {
+			fillColor : "red",
+			strokeColor : "yellow",
+			pointRadius : 6
+		};
+		vector.addFeatures([ pointlayer ]);
+		map.setCenter(new SuperMap.LonLat(data.axisY, data.axisX), 5);
+	}
+</script>
+
+</head>
+
+<body onload="init()">
+	<div>
+		<input type="button" onclick="monitor()" value="开始监控" /> <input
+			type="button" onclick="stopMonitor()" value="停止监控" /> <input
+			type="text" name="imei" value="867376024926848" id="imei">
+	</div>
+	<div id="map"></div>
+
+</body>
+
+</html>

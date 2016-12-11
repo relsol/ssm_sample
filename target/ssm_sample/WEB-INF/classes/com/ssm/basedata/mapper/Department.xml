@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.basedata.dao.DepartmentMapper">
+	
+	<resultMap type="com.ssm.basedata.entity.Department" id="DepartmentMap">
+		<id column="c_id" jdbcType="INTEGER" property="id"/>
+		<result column="C_CODE" jdbcType="VARCHAR" property="code"/>
+		<result column="C_NAME" jdbcType="VARCHAR" property="name"/>
+		<result column="C_TYPE" jdbcType="VARCHAR" property="type"/>
+		<result column="C_DUTY_PHONE" jdbcType="VARCHAR" property="dutyPhone"/>
+		<result column="C_ADDRESS" jdbcType="VARCHAR" property="address"/>
+		<result column="C_STATUS" jdbcType="NUMERIC" property="status"/>
+		<result column="C_REMARK" jdbcType="VARCHAR" property="remark"/>
+		<result column="C_PID" jdbcType="NUMERIC" property="pid"/>
+		<result column="C_ORDER" jdbcType="NUMERIC" property="order"/>
+		<result column="C_CREATER_ID" jdbcType="NUMERIC" property="createrId"/>
+		<result column="C_CREATER_TIME" jdbcType="TIMESTAMP" property="createrTime"/>
+		<result column="C_CREATER_IP" jdbcType="VARCHAR" property="createrIp"/>
+		<result column="C_UPDATER_ID" jdbcType="NUMERIC" property="updaterId"/>
+		<result column="C_UPDATER_TIME" jdbcType="TIMESTAMP" property="updaterTime"/>
+		<result column="C_UPDATER_IP" jdbcType="VARCHAR" property="updaterIp"/>
+	</resultMap>
+	
+	<select id="findSectionByWorkAreaId" parameterType="Integer" resultMap="DepartmentMap">
+		select distinct * from njmis.t_department t
+		where t.c_type = 1
+		start with t.c_id =  #{workAreaId, jdbcType=INTEGER}
+		connect by t.c_id = PRIOR t.c_pid
+	</select>
+	
+	<select id="findWorkAreaByEmployeeId" parameterType="Integer" resultMap="DepartmentMap">
+		select 
+			distinct * from njmis.t_department t
+    	where 
+    		t.c_type = 3 
+			start with 
+				t.c_id in (
+						select 
+							distinct d.c_id 
+						from 
+							njmis.t_department d 
+	         			inner join 
+	         				njmis.t_department_emp e 
+	         			on 
+	         				d.c_id = e.c_department_id and e.c_employee_id = #{employeeId, jdbcType=INTEGER}
+	    	) connect by PRIOR t.c_id =  t.c_pid
+	    order by t.c_type
+	</select>
+	
+	<select id="findDepAndChildByEmployeeId" parameterType="Integer" resultMap="DepartmentMap">
+		select 
+			distinct * from njmis.t_department t
+    	
+			start with 
+				t.c_id in (
+						select 
+							distinct d.c_id 
+						from 
+							njmis.t_department d 
+	         			inner join 
+	         				njmis.t_department_emp e 
+	         			on 
+	         				d.c_id = e.c_department_id and e.c_employee_id = #{employeeId, jdbcType=INTEGER}
+	    	) connect by PRIOR t.c_id =  t.c_pid
+	    order by t.c_type
+	</select>
+	
+	<select id="countList" parameterType="hashmap" resultType="long">
+		select count(t.c_id) <include refid="pagefind"/>
+	</select>
+	
+	<select id="findPageList" parameterType="hashmap" resultMap="DepartmentMap">
+		select t.*
+		<include refid="pagefind"/>
+	</select>
+	
+	<sql id="pagefind">
+		from T_DEPARTMENT t 
+		<if test="employeeId != null">
+			left join t_department_emp de on t.c_id = de.c_department_id
+		</if>
+        <where>
+        	<if test="id != null ">and t.c_id = #{id, jdbcType=INTEGER}</if>
+        	<if test="type != null and type != ''">and t.c_type = #{type, jdbcType=VARCHAR}</if>
+        	<if test="pid != null">and t.c_pid = #{pid, jdbcType=INTEGER}</if>
+			<if test="status != null">and t.c_status = #{status, jdbcType=NUMERIC}</if>
+			<if test="employeeId != null">and de.c_employee_id = #{employeeId, jdbcType=NUMERIC}</if>
+        </where>
+	</sql>
+	
+	<select id="findById" parameterType="Integer" resultMap="DepartmentMap">
+		select t.* from T_DEPARTMENT t where t.c_id = #{id, jdbcType=INTEGER}
+	</select>
+	
+	<insert id="addOne" parameterType="com.ssm.basedata.entity.Department" useGeneratedKeys="true" keyProperty="id" >
+		<selectKey keyProperty="id" resultType="int" order="BEFORE">
+    		select common_sequence.nextval from dual
+    	</selectKey>
+		
+        insert into T_DEPARTMENT
+        	(
+    			C_ID,
+        		C_CODE,
+        		C_NAME,
+        		C_TYPE,
+        		C_DUTY_PHONE,
+        		C_ADDRESS,
+        		C_STATUS,
+        		C_REMARK,
+        		C_PID,
+        		C_ORDER,
+        		C_CREATER_ID,
+        		C_CREATER_TIME,
+        		C_CREATER_IP,
+        		C_UPDATER_ID,
+        		C_UPDATER_TIME,
+        		C_UPDATER_IP
+        	)  
+            values
+            (
+            	#{id, jdbcType=INTEGER},
+				#{code, jdbcType=VARCHAR} ,
+				#{name, jdbcType=VARCHAR} ,
+				#{type, jdbcType=VARCHAR} ,
+				#{dutyPhone, jdbcType=VARCHAR} ,
+				#{address, jdbcType=VARCHAR} ,
+				#{status, jdbcType=NUMERIC} ,
+				#{remark, jdbcType=VARCHAR} ,
+				#{pid, jdbcType=NUMERIC} ,
+				#{order, jdbcType=NUMERIC} ,
+				#{createrId, jdbcType=NUMERIC} ,
+				#{createrTime, jdbcType=TIMESTAMP} ,
+				#{createrIp, jdbcType=VARCHAR} ,
+				#{updaterId, jdbcType=NUMERIC} ,
+				#{updaterTime, jdbcType=TIMESTAMP} ,
+				#{updaterIp, jdbcType=VARCHAR} 
+            )  
+    </insert>
+    
+    <update id="updateOne" parameterType="com.ssm.basedata.entity.Department" >
+        update T_DEPARTMENT set 
+        	C_ID = #{id, jdbcType=INTEGER},
+        	C_CODE = #{code, jdbcType=VARCHAR},
+        	C_NAME = #{name, jdbcType=VARCHAR},
+        	C_TYPE = #{type, jdbcType=VARCHAR},
+        	C_DUTY_PHONE = #{dutyPhone, jdbcType=VARCHAR},
+        	C_ADDRESS = #{address, jdbcType=VARCHAR},
+        	C_STATUS = #{status, jdbcType=NUMERIC},
+        	C_REMARK = #{remark, jdbcType=VARCHAR},
+        	C_PID = #{pid, jdbcType=NUMERIC},
+        	C_ORDER = #{order, jdbcType=NUMERIC},
+        	C_CREATER_ID = #{createrId, jdbcType=NUMERIC},
+        	C_CREATER_TIME = #{createrTime, jdbcType=TIMESTAMP},
+        	C_CREATER_IP = #{createrIp, jdbcType=VARCHAR},
+        	C_UPDATER_ID = #{updaterId, jdbcType=NUMERIC},
+        	C_UPDATER_TIME = #{updaterTime, jdbcType=TIMESTAMP},
+        	C_UPDATER_IP = #{updaterIp, jdbcType=VARCHAR}
+        where c_id =  #{id, jdbcType=INTEGER}
+    </update>
+    
+    <delete id="delById" parameterType="Integer">
+        delete from T_DEPARTMENT where c_id = #{id, jdbcType=INTEGER}
+	</delete>
+	
+	<select id="findSubList" parameterType="hashmap" resultMap="DepartmentMap">
+		select 
+			distinct t.*
+		from 
+			t_department t
+		left join
+			t_department_emp e
+		on t.c_id = e.c_department_id
+		<where>
+			<if test="type!=null and type!=''"> and t.c_type = #{type, jdbcType=VARCHAR}</if>
+			<if test="status != null">and t.c_status = #{status, jdbcType=NUMERIC}</if>
+			<if test="employeeId != null ">
+				start with 
+					t.c_id in (select de.c_department_id from t_department_emp de where de.c_employee_id = #{employeeId, jdbcType=NUMERIC})
+				connect by  
+					t.c_pid = prior t.c_id
+			</if>
+		</where>
+	</select>
+</mapper>

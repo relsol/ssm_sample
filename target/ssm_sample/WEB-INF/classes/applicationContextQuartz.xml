@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+	"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+
+	<!-- Spring 定时器 消息模块 -->
+	<bean id="taskOneJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="quartzTask" />
+		<property name="targetMethod" value="taskOne" />
+	</bean>
+	<bean id="taskOneTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="taskOneJob" />
+		</property>
+		<!-- execute task every 5 minute -->
+		<property name="cronExpression">
+			<value>0 0/5 * * * ?</value>
+		</property>
+	</bean>
+	
+	<bean id="taskTwoJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="quartzTask" />
+		<property name="targetMethod" value="taskTwo" />
+	</bean>
+	<bean id="taskTwoTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="taskTwoJob" />
+		</property>
+	
+		<!-- execute task every 5 minute -->
+		<property name="cronExpression">
+			<value>0 0/5 * * * ?</value>
+		</property>
+	</bean>
+	
+	<!--  =====================添加定时任务======================= -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref local="taskOneTrigger" />
+				<ref local="taskTwoTrigger"/>
+			</list>
+		</property>
+	</bean>
+	
+</beans>

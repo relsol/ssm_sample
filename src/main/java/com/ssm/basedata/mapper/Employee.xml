@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.basedata.dao.EmployeeMapper">
+	
+	<resultMap type="com.ssm.basedata.entity.Employee" id="EmployeeMap">
+		<id column="c_id" jdbcType="INTEGER" property="id"/>
+		<result column="C_LOGIN_NAME" jdbcType="VARCHAR" property="loginName"/>
+		<result column="C_PASSWORD" jdbcType="VARCHAR" property="password"/>
+		<result column="C_USER_NAME" jdbcType="VARCHAR" property="userName"/>
+		<result column="C_SEX" jdbcType="NUMERIC" property="sex"/>
+		<result column="C_PHONE" jdbcType="VARCHAR" property="phone"/>
+		<result column="C_MOBILE" jdbcType="VARCHAR" property="mobile"/>
+		<result column="C_ADDRESS" jdbcType="VARCHAR" property="address"/>
+		<result column="C_CANCEL" jdbcType="NUMERIC" property="cancel"/>
+		<result column="C_SYSTEM_USER" jdbcType="VARCHAR" property="systemUser"/>
+		<result column="C_CREATER_ID" jdbcType="NUMERIC" property="createrId"/>
+		<result column="C_CREATER_TIME" jdbcType="TIMESTAMP" property="createrTime"/>
+		<result column="C_UPDATER_ID" jdbcType="NUMERIC" property="updaterId"/>
+		<result column="C_UPDATER_TIME" jdbcType="TIMESTAMP" property="updaterTime"/>
+		<result column="C_UPDATER_IP" jdbcType="VARCHAR" property="updaterIp"/>
+		<result column="C_IP_ADDRESS" jdbcType="VARCHAR" property="ipAddress"/>
+		<result column="C_JPUSH_ID" jdbcType="NUMERIC" property="jpushId"/>
+		<result column="C_SAFE_LEVEL_ID" jdbcType="NUMERIC" property="safeLevelId"/>
+		<result column="C_SAFE_LEVEL" jdbcType="VARCHAR" property="safeLevel"/>
+	</resultMap>
+	
+	<select id="findByLoginName" parameterType="String" resultMap="EmployeeMap">
+		select t.* from T_EMPLOYEE t where t.c_login_name = #{loginName, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="countList" parameterType="hashmap" resultType="long">
+		select count(t.c_id) <include refid="pagefind"/>
+	</select>
+	
+	<select id="findPageList" parameterType="hashmap" resultMap="EmployeeMap">
+			select t.*
+			<include refid="pagefind"/>
+	</select>
+	
+	<sql id="pagefind">
+		from T_EMPLOYEE t 
+		<if test="departmentId != null">
+			left join t_department_emp de on de.c_employee_id = t.c_id
+		</if>
+        <where>
+        	<if test="id != null ">and t.c_id = #{id, jdbcType=INTEGER}</if>
+        	<if test="userName !=null and userName != ''">and t.c_user_name list #{userName, jdbcType=VARCHAR}</if>
+        	<if test="mobile != null and mobile != '' ">and t.c_mobile like #{mobile, jdbcType=VARCHAR}</if>
+        	<if test="cancel!=null">and t.c_cancel = #{cancel, jdbcType=INTEGER}</if>
+        	<if test="departmentId != null ">and de.c_department_id = #{departmentId, jdbcType=INTEGER}</if>
+        </where>
+	</sql>
+	
+	<select id="findById" parameterType="Integer" resultMap="EmployeeMap">
+		select t.* from T_EMPLOYEE t where t.c_id = #{id, jdbcType=INTEGER}
+	</select>
+	
+	<insert id="addOne" parameterType="com.ssm.basedata.entity.Employee" useGeneratedKeys="true" keyProperty="id" >
+		<selectKey keyProperty="id" resultType="int" order="BEFORE">
+    		select common_sequence.nextval from dual
+    	</selectKey>
+		
+        insert into T_EMPLOYEE
+        	(
+    			C_ID,
+        		C_LOGIN_NAME,
+        		C_PASSWORD,
+        		C_USER_NAME,
+        		C_SEX,
+        		C_PHONE,
+        		C_MOBILE,
+        		C_ADDRESS,
+        		C_CANCEL,
+        		C_SYSTEM_USER,
+        		C_CREATER_ID,
+        		C_CREATER_TIME,
+        		C_UPDATER_ID,
+        		C_UPDATER_TIME,
+        		C_UPDATER_IP,
+        		C_IP_ADDRESS,
+        		C_JPUSH_ID,
+        		C_SAFE_LEVEL_ID,
+        		C_SAFE_LEVEL
+        	)  
+            values
+            (
+            	#{id, jdbcType=INTEGER},
+				#{loginName, jdbcType=VARCHAR} ,
+				#{password, jdbcType=VARCHAR} ,
+				#{userName, jdbcType=VARCHAR} ,
+				#{sex, jdbcType=NUMERIC} ,
+				#{phone, jdbcType=VARCHAR} ,
+				#{mobile, jdbcType=VARCHAR} ,
+				#{address, jdbcType=VARCHAR} ,
+				#{cancel, jdbcType=NUMERIC} ,
+				#{systemUser, jdbcType=VARCHAR} ,
+				#{createrId, jdbcType=NUMERIC} ,
+				#{createrTime, jdbcType=TIMESTAMP} ,
+				#{updaterId, jdbcType=NUMERIC} ,
+				#{updaterTime, jdbcType=TIMESTAMP} ,
+				#{updaterIp, jdbcType=VARCHAR} ,
+				#{ipAddress, jdbcType=VARCHAR} ,
+				#{jpushId, jdbcType=NUMERIC} ,
+				#{safeLevelId, jdbcType=NUMERIC} ,
+				#{safeLevel, jdbcType=VARCHAR} 
+            )  
+    </insert>
+    
+    <update id="updateOne" parameterType="com.ssm.basedata.entity.Employee" >
+        update T_EMPLOYEE set 
+        	C_ID = #{id, jdbcType=INTEGER},
+        	C_LOGIN_NAME = #{loginName, jdbcType=VARCHAR},
+        	C_PASSWORD = #{password, jdbcType=VARCHAR},
+        	C_USER_NAME = #{userName, jdbcType=VARCHAR},
+        	C_SEX = #{sex, jdbcType=NUMERIC},
+        	C_PHONE = #{phone, jdbcType=VARCHAR},
+        	C_MOBILE = #{mobile, jdbcType=VARCHAR},
+        	C_ADDRESS = #{address, jdbcType=VARCHAR},
+        	C_CANCEL = #{cancel, jdbcType=NUMERIC},
+        	C_SYSTEM_USER = #{systemUser, jdbcType=VARCHAR},
+        	C_CREATER_ID = #{createrId, jdbcType=NUMERIC},
+        	C_CREATER_TIME = #{createrTime, jdbcType=TIMESTAMP},
+        	C_UPDATER_ID = #{updaterId, jdbcType=NUMERIC},
+        	C_UPDATER_TIME = #{updaterTime, jdbcType=TIMESTAMP},
+        	C_UPDATER_IP = #{updaterIp, jdbcType=VARCHAR},
+        	C_IP_ADDRESS = #{ipAddress, jdbcType=VARCHAR},
+        	C_JPUSH_ID = #{jpushId, jdbcType=NUMERIC},
+        	C_SAFE_LEVEL_ID = #{safeLevelId, jdbcType=NUMERIC},
+        	C_SAFE_LEVEL = #{safeLevel, jdbcType=VARCHAR}
+        where c_id =  #{id, jdbcType=INTEGER}
+    </update>
+    
+    <delete id="delById" parameterType="Integer">
+        delete from T_EMPLOYEE where c_id = #{id, jdbcType=INTEGER}
+	</delete>
+	
+</mapper>

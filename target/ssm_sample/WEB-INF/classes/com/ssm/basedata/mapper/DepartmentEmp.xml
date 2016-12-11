@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.basedata.dao.DepartmentEmpMapper">
+	
+	<resultMap type="com.ssm.basedata.entity.DepartmentEmp" id="DepartmentEmpMap">
+		<id column="c_id" jdbcType="NUMERIC" property="id"/>
+		<result column="C_DEPARTMENT_ID" jdbcType="NUMERIC" property="departmentId"/>
+		<result column="C_EMPLOYEE_ID" jdbcType="NUMERIC" property="employeeId"/>
+	</resultMap>
+	
+	<insert id="addOne" parameterType="com.ssm.basedata.entity.DepartmentEmp" useGeneratedKeys="true" keyProperty="id" >
+		<selectKey keyProperty="id" resultType="int" order="BEFORE">
+    		select common_sequence.nextval from dual
+    	</selectKey>
+		
+        insert into T_DEPARTMENT_EMP
+        	(
+    			C_ID,
+        		C_DEPARTMENT_ID,
+        		C_EMPLOYEE_ID
+        	)  
+            values
+            (
+            	#{id, jdbcType=INTEGER},
+				#{departmentId, jdbcType=NUMERIC} ,
+				#{employeeId, jdbcType=NUMERIC}
+            )  
+    </insert>
+    
+    <update id="updateOne" parameterType="com.ssm.basedata.entity.DepartmentEmp" >
+        update T_DEPARTMENT_EMP set 
+        	C_ID = #{id, jdbcType=INTEGER},
+        	C_DEPARTMENT_ID = #{departmentId, jdbcType=NUMERIC},
+        	C_EMPLOYEE_ID = #{employeeId, jdbcType=NUMERIC}
+        where c_id =  #{id, jdbcType=INTEGER}
+    </update>
+    
+    <delete id="delById" parameterType="Integer">
+        delete from T_DEPARTMENT_EMP where c_id = #{id, jdbcType=INTEGER}
+	</delete>
+	
+	<delete id="delByEmployeeId" parameterType="Integer">
+        delete from T_DEPARTMENT_EMP where c_employee_id = #{employeeID, jdbcType=INTEGER}
+	</delete>
+</mapper>

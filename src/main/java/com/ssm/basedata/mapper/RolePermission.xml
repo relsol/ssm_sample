@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.basedata.dao.RolePermissionMapper">
+	
+	<resultMap type="com.ssm.basedata.entity.RolePermission" id="RolePermissionMap">
+		<id column="c_id" jdbcType="INTEGER" property="id"/>
+		<result column="C_PERMISSION_ID" jdbcType="NUMERIC" property="permissionId"/>
+		<result column="C_ROLE_ID" jdbcType="NUMERIC" property="roleId"/>
+	</resultMap>
+	
+    <delete id="delByRoleId" parameterType="Integer">
+        delete from T_ROLE_PERMISSION where c_role_id = #{roleId, jdbcType=INTEGER}
+	</delete>
+	
+	<select id="countList" parameterType="hashmap" resultType="long">
+		select count(t.c_id) <include refid="pagefind"/>
+	</select>
+	
+	<select id="findPageList" parameterType="hashmap" resultMap="RolePermissionMap">
+		select t.*
+		<include refid="pagefind"/>
+	</select>
+	
+	<sql id="pagefind">
+		from T_ROLE_PERMISSION t 
+        <where>
+        	<if test="id != null ">and t.c_id == #{id, jdbcType=INTEGER}</if>
+        </where>
+	</sql>
+	
+	<select id="findById" parameterType="Integer" resultMap="RolePermissionMap">
+		select t.* from T_ROLE_PERMISSION t where t.c_id = #{id, jdbcType=INTEGER}
+	</select>
+	
+	<insert id="addOne" parameterType="com.ssm.basedata.entity.RolePermission" useGeneratedKeys="true" keyProperty="id" >
+		<selectKey keyProperty="id" resultType="int" order="BEFORE">
+    		select common_sequence.nextval from dual
+    	</selectKey>
+		
+        insert into T_ROLE_PERMISSION
+        	(
+    			C_ID,
+        		C_PERMISSION_ID,
+        		C_ROLE_ID
+        	)  
+            values
+            (
+            	#{id, jdbcType=INTEGER},
+				#{permissionId, jdbcType=NUMERIC} ,
+				#{roleId, jdbcType=NUMERIC} 
+            )  
+    </insert>
+    
+    <update id="updateOne" parameterType="com.ssm.basedata.entity.RolePermission" >
+        update T_ROLE_PERMISSION set 
+        	C_ID = #{id, jdbcType=INTEGER},
+        	C_PERMISSION_ID = #{permissionId, jdbcType=NUMERIC},
+        	C_ROLE_ID = #{roleId, jdbcType=NUMERIC}
+        where c_id =  #{id, jdbcType=INTEGER}
+    </update>
+    
+    <delete id="delById" parameterType="Integer">
+        delete from T_ROLE_PERMISSION where c_id = #{id, jdbcType=INTEGER}
+	</delete>
+	
+</mapper>

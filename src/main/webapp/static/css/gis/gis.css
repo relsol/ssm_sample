@@ -1,0 +1,531 @@
+@charset "utf-8";
+/* CSS Document */
+
+html{
+ height:100%;
+ margin:0;
+}
+
+body{
+    height:100%;
+    margin:0; 
+}
+
+ul, li, tr, td, th, form, input, dl, dt, dd, hr, p {
+    margin: 0;
+    padding: 0;
+}
+
+element.style {
+    height: 214px;
+}
+
+.input_a {
+    float: left;
+    margin: 0;
+    position: relative;
+}
+
+.i_b {
+    background-color: Transparent;
+    height: 24px;
+    white-space: nowrap;
+    width: 271px;
+}
+
+.input_ctl {
+    float: left;
+    position: relative;
+}
+
+.input_ctl label {
+    color: #999999;
+    cursor: text;
+    font-size: 110%;
+    left: 4px;
+    line-height: 20px;
+    position: absolute;
+    top: 2px;
+    white-space: nowrap;
+}
+
+
+.main {
+    background-color: #F1EEE8;
+    overflow-x: hidden;
+    overflow-y: hidden;
+	height:95%;
+	width:100%;
+}
+
+.main #leftside {
+    background-color: #FFFFFF;
+    float: left;
+    position: relative;
+    width: 345px;
+    z-index: 11;
+	height:100%
+}
+
+.main #rightside {
+    position: relative;
+    margin-left: 345px;
+    z-index: 11;
+	height:100%
+}
+
+.main .panel_tab {
+    background-color: #F1EEE8;
+    height: 30px;
+    position: relative;
+    width: 345px;
+}
+
+.main .panel_tab #tab_left {
+    background: url(../../images/gis/1.png) repeat scroll -20px -143px transparent;
+    float: left;
+    height: 29px;
+    width: 6px;
+}
+
+
+.main .panel_tab ul {
+    background: url("../../images/gis/1.png") repeat scroll -2px -111px transparent;
+    float: left;
+    height: 29px;
+    width: 335px;
+}
+
+li {
+    list-style: none outside none;
+}
+
+.main .panel_tab ul li {
+    display: block;
+    float: left;
+    height: 29px;
+    margin-top: 1px;
+    width: 110px;
+	line-height: 29px;
+    text-align: center;
+}
+
+.main .panel_tab li span {
+    cursor: pointer;
+}
+
+.main .panel_tab ul li.select {
+    background-color: #FFFFFF;
+    color: #336688;
+}
+
+#tab_sp0, #tab_sp1, #tab_sp2, #tab_sp3 {
+    background: url("../../images/gis/1.png") repeat scroll -2px -144px transparent;
+    height: 28px;
+    width: 1px;
+	background-position: -2px -144px;
+}
+
+#tab_sp0.select, #tab_sp1.select, #tab_sp2.select, #tab_sp3.select {
+    background-position: -4px -144px;
+}
+
+#tab_sp3 {
+    position: absolute;
+    right: 14px;
+    top: 1px;
+}
+
+.panelCtrl {
+    cursor: pointer;
+    height: 28px;
+    position: absolute;
+    right: 3px;
+    top: 1px;
+    width: 9px;
+    z-index: 1;
+}
+.panelCtrl div {
+    background: url("../../images/gis/1.png") repeat scroll -37px -144px transparent;
+    font-size: 0;
+    height: 5px;
+    margin: 12px 0;
+    width: 9px;
+}
+
+
+.panelCtrl.open {
+    background: url("../../images/gis/1.png") repeat scroll -28px -256px transparent;
+    height: 24px;
+    right: -15px;
+    width: 20px;
+}
+
+.panelCtrl.open div {
+    background-position: -45px -144px;
+    margin: 9px 0 0 7px;
+}
+
+
+.main .panel_tab .tab_right {
+    background: url("../../images/gis/1.png") repeat scroll -29px -143px transparent;
+    height: 30px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 4px;
+}
+
+.clear {
+    clear: both;
+}
+
+
+#panels.search #search_panel, #panels.businfo #businfo_panel, #panels.bus #bus_panel, #panels.nav #nav_panel, #panels.attntn #attention_panel {
+    display: block;
+}
+#panels .queryPanel {
+    display: none;
+    margin: 0 5px;
+    height: 100%;
+    position: relative;
+    width: auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+#panels .formArea {
+    padding: 11px 0 0 5px;
+}
+
+#query, #businfo_key {
+    width: 226px;
+}
+.i_b input {
+    border: 1px solid #B5B5B5;
+    float: left;
+    font-size: 110%;
+    height: 26px;
+    line-height: 20px;
+    padding-left: 3px;
+    width: 242px;
+}
+
+
+.main #panels .subBtnCon {
+    height: 25px;
+    position: absolute;
+    right: 5px;
+    width: 82px;
+}
+
+.main #panels .subBtnCon .btnarea {
+    height: 26px;
+    margin-left: 20px;
+    overflow: auto;
+}
+
+.main #panels .submit {
+    background: url("../../images/gis/1.png") repeat scroll -35px -153px transparent;
+    border: 0 none;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: right;
+    height: 25px;
+    width: 72px;
+}
+
+#panels {
+    border-left: 1px solid #B5B5B5;
+    border-right: 1px solid #B5B5B5;
+    height: 94%;
+    overflow: auto;
+    width: 343px;
+}
+
+#panels .resultArea {
+    border-top: 1px dotted #B5B5B5;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    top: 8px;
+    width: 333px;
+}
+
+#searchResult .resultCon {
+    margin-top: 5px;
+    z-index: 70;
+    width: 315px;
+}
+
+#searchResult .categorycount {
+    background-color: #F2F2F2;
+    height: 22px;
+    line-height: 22px;
+    margin-bottom: 5px;
+}
+
+.backbtn {
+    cursor: pointer;
+    float: left;
+    position: relative;
+    top: 3px;
+}
+
+#searchResult .categorycount .counttips {
+    float: right;
+}
+
+#searchResult .rstOne {
+    clear: left;
+    z-index: 500;
+}
+
+#searchResult .rfocus {
+    background-color: #F1EEE8;
+}
+
+#searchResult .nIco {
+    float: left;
+	background: url("../../images/gis/mark.png") no-repeat scroll -10px -145px transparent;
+	padding: 5px 15px 10px 1px;
+}
+
+#searchResult .rfocus .nIco {
+    float: left;
+	background: url("../../images/gis/mark.png") no-repeat scroll -10px -107px transparent;
+	padding: 5px 15px 10px 1px;
+}
+
+#searchResult .nIco span {
+    cursor: pointer;
+    margin-left: 5px;
+	color: #FFF;
+	font-weight:bolder;
+}
+
+
+#searchResult .nIco2 {
+    float: left;
+	background: url("../../images/gis/mark.png") no-repeat scroll -10px -145px transparent;
+	padding: 5px 15px 10px 1px;
+}
+
+#searchResult .rfocus .nIco2 {
+    float: left;
+	background: url("../../images/gis/mark.png") no-repeat scroll -10px -107px transparent;
+	padding: 5px 15px 10px 1px;
+}
+
+#searchResult .nIco2 span {
+    cursor: pointer;
+    margin-left: 1px;
+	color: #FFF;
+	font-weight:bolder;
+}
+
+
+
+
+
+
+#searchResult .nIco img.rst0 {
+    background-position: -11px -145px;
+}
+#searchResult .nIco img.rst1 {
+    background-position: -45px -145px;
+}
+#searchResult .nIco img.rst2 {
+    background-position: -81px -145px;
+}
+#searchResult .nIco img.rst3 {
+    background-position: -115px -145px;
+}
+#searchResult .nIco img.rst4 {
+    background-position: -150px -145px;
+}
+#searchResult .nIco img.rst5 {
+    background-position: -185px -145px;
+}
+#searchResult .nIco img.rst6 {
+    background-position: -220px -145px;
+}
+#searchResult .nIco img.rst7 {
+    background-position: -254px -145px;
+}
+#searchResult .nIco img.rst8 {
+    background-position: -289px -145px;
+}
+#searchResult .nIco img.rst9 {
+    background-position: -324px -145px;
+}
+#searchResult .nIco img.rst10 {
+    background-position: -359px -145px;
+}
+
+#searchResult .rfocus .nIco img.rst0 {
+    background-position: -11px -108px;
+}
+#searchResult .rfocus .nIco img.rst1 {
+    background-position: -45px -108px;
+}
+#searchResult .rfocus .nIco img.rst2 {
+    background-position: -81px -108px;
+}
+#searchResult .rfocus .nIco img.rst3 {
+    background-position: -115px -108px;
+}
+#searchResult .rfocus .nIco img.rst4 {
+    background-position: -150px -108px;
+}
+#searchResult .rfocus .nIco img.rst5 {
+    background-position: -185px -108px;
+}
+#searchResult .rfocus .nIco img.rst6 {
+    background-position: -220px -108px;
+}
+#searchResult .rfocus .nIco img.rst7 {
+    background-position: -254px -108px;
+}
+#searchResult .rfocus .nIco img.rst8 {
+    background-position: -289px -108px;
+}
+#searchResult .rfocus .nIco img.rst9 {
+    background-position: -324px -108px;
+}
+#searchResult .rfocus .nIco img.rst10 {
+    background-position: -359px -108px;
+}
+
+#searchResult .rstOne .nIco img {
+    height: 30px;
+    margin-left: 5px;
+    width: 30px;
+}
+#searchResult .nIco img {
+    background-image: url(../../images/gis/mark.png);
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+#searchResult .rstOne .info, #searchResult .userOne .info {
+    margin-left: 35px;
+    padding: 3px 0;
+}
+
+#searchResult .detailLink {
+    color: #336688;
+    float: right;
+    line-height: 20px;
+    margin: 0 5px;
+    text-decoration: none;
+    visibility: hidden;
+}
+
+
+#searchResult .title {
+    color: #336688;
+    cursor: pointer;
+    display: inline;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+#searchResult .rstOne .info .p, #searchResult .userOne .info .p {
+    clear: both;
+    color: #464542;
+    line-height: 19px;
+}
+
+#searchResult .listtooloption {
+    clear: both;
+}
+
+#searchResult .list_toolbar {
+    height: 20px;
+    padding-top: 2px;
+    visibility: hidden;
+}
+
+#searchResult .container {
+    cursor: pointer;
+	width:316px;
+}
+
+
+#city_tools {
+    font-size: 12px;
+    height: 30px;
+    line-height: 28px;
+    overflow: hidden;
+    position: relative;
+}
+
+#city_ctr {
+    top: 2px;
+}
+#city_ctr, #tool_ctr {
+    position: absolute;
+}
+
+#city_ctr {
+    top: 2px;
+}
+#city_ctr, #tool_ctr {
+    position: absolute;
+}
+
+#tool_ctr {
+    right: 0;
+}
+#city_ctr, #tool_ctr {
+    position: absolute;
+}
+
+#tool_ctr #toolbar {
+    float: left;
+    height: 28px;
+    line-height: 28px;
+    margin-left: 8px;
+    overflow: hidden; 
+    
+}
+
+#toolbar .tool_con {
+    cursor: pointer;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    margin-right: 14px;
+    overflow: hidden;
+    position: relative;
+}
+
+#toolbar .tool_con div {
+    float: left;
+    position: relative;
+}
+
+.min_map{
+	position:absolute;
+	left:0px;
+	right:0px;
+    height: 94%;
+    width: 100%;
+}
+
+.max_map{
+	position:absolute;
+	left:0px;
+	right:0px;
+	width:100%;
+	height:90%;
+}
+
+#tool_ctr .more {
+    border-left: 1px solid;
+    float: left;
+    height: 12px;
+    top: 8px;
+    width: 23px;
+}
