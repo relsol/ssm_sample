@@ -14,7 +14,7 @@
         <!-- mybatis版本号 -->
         <mybatis.version>3.4.1</mybatis.version>
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
-        <quartz.version>2.2.1</quartz.version>
+        <quartz.version>2.3.2</quartz.version>
         <org.activiti.version>5.21.0</org.activiti.version>
     </properties>
 
