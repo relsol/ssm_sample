@@ -10,7 +10,7 @@
 
     <properties>
         <!-- spring版本号 -->
-        <spring.version>4.2.6.RELEASE</spring.version>
+        <spring.version>4.2.7.RELEASE</spring.version>
         <!-- mybatis版本号 -->
         <mybatis.version>3.4.1</mybatis.version>
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
